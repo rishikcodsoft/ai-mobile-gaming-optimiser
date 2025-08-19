@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>AI Mobile Gaming Optimiser</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>body{max-width:900px;margin:auto}</style>
+</head>
+<body>
+  <h2>🎮 AI Mobile Gaming Optimiser</h2>
+  <form method="post">
+    <div class="grid">
+      <label>CPU<select name="cpu"><option>Snapdragon 720G</option><option>Snapdragon 870</option></select></label>
+      <label>GPU<select name="gpu"><option>Adreno 618</option><option>Adreno 730</option></select></label>
+    </div>
+    <div class="grid">
+      <label>RAM (GB)<select name="ram"><option>6</option><option>8</option><option>12</option></select></label>
+      <label>Game<select name="game"><option>BGMI / PUBG Mobile</option><option>Genshin Impact</option></select></label>
+    </div>
+    <label>Target FPS<input type="number" name="target_fps" value="60" min="30" max="144"></label>
+    <button type="submit">Recommend Settings</button>
+  </form>
+  {% if result %}
+  <article>
+    <h4>Recommended for {{result["game"]}}</h4>
+    <ul>
+      <li><b>Resolution:</b> {{result["resolution"]}}</li>
+      <li><b>Quality:</b> {{result["quality"]}}</li>
+      <li><b>Estimated FPS:</b> {{result["estimated_fps"]}}</li>
+    </ul>
+  </article>
+  {% endif %}
+</body>
+</html>
